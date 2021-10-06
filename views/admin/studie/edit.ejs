@@ -1,0 +1,47 @@
+<%- include ('../../partials/header.ejs') %>
+<section class="signup-form">
+    <div class = "container">
+        <hr>
+        <div class="card">
+            <div class = "card-header">
+                <h2>Studie bearbeiten</h2>
+            </div>
+            <div class="card-body">
+                <form action = "/studie/update" method = "post">
+                    <input type = "text" name = "titel" placeholder="Name der Studie" value="<%=studies.titel%>">
+                    <br> <br>
+                    <textarea class="form-control" name = "beschreibung" placeholder = "Beschreibung" id="beschreibung"><%- studies.beschreibung %></textarea><br>
+                    <br><br>
+                    <input type = "text" name ="dauer_von_bis" placeholder = "Dauer von/bis" value="<%=studies.dauer_von_bis%>">
+                    <br> <br>
+                    <input type = "text" name = "status" placeholder = "Status" value="<%=studies.status%>">
+                    <br> <br>
+                    <input type = "text" name = "vergutung_std" placeholder="Vergütung Euro/std" value="<%=studies.vergutung_euro_std%>">
+                    <br> <br>
+                    <input type = "hidden" name ="studie_id" value = "<%= studies.studie_id %>"> 
+                    <button class = "btn btn-success">Aktualisieren</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include ('../../partials/footer.ejs') %> 
+
+
+<script src = "/tinymce/tinymce.min.js"></script>
+
+<script>
+
+    tinymce.init({
+        language: 'de',
+        selector: "#beschreibung",
+        activeEditor: true,
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+        ],
+        
+    })
+
+</script>

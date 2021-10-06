@@ -1,0 +1,36 @@
+<%- include ('../../partials/header.ejs') %>
+<section class="signup-form">
+    <div class = "container">
+        <hr>
+        <div class="card">
+            <div class = "card-header">
+                <h2>Termin bearbeiten</h2>
+            </div>
+            <div class="card-body">
+                <form action = "/termine/update" method = "post">
+                    <input type = "text" name = "titel" placeholder="Titel" value="<%=termines.titel%>">
+                    <br> <br>
+                    <input type = "text" name ="datum" placeholder = "Datum" id="datepicker" value="<%=termines.datum%>">
+                    <br> <br>
+                    <input type = "time" name = "uhrzeit" placeholder = "Uhrzeit" value = "<%= termines.uhrzeit %>">
+                    <br> <br>
+                    <input type = "text" name = "ort" placeholder = "Ort" value="<%=termines.ort%>">
+                    <br> <br>
+                    <input type = "hidden" name ="termin_id" value = "<%= termines.termin_id %>"> 
+                    <button class = "btn btn-success">Aktualisieren</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include ('../../partials/footer.ejs') %>     
+
+<script>
+    $( function() {
+      $( "#datepicker" ).datepicker({
+          dateFormat: "dd-mm-yy",
+          changeYear: true,
+          changeMonth: true,
+      })
+    });
+</script>

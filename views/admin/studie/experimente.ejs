@@ -1,0 +1,62 @@
+<%- include ('../../partials/header.ejs') %>
+    <section class="banner banner-secondary" id="top" style="background-image: url(../../img/banner-image-1-1920x300.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="banner-caption">
+                        <div class="line-dec"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div class = "container">
+    <h2>Experimente</h2>
+    <a class= "btn btn-success" href="/admin/studie/new-studie"> Neue Studie Hinzufügen</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Studie ID</th>
+                <th>Titel</th>
+                <th>slug</th>
+                <th>Dauer</th>
+                <th>Status</th>
+                <th>Vergütung pro Stunde</th>
+                <th>Aktionen</th>
+            </tr>          
+        </thead>
+        <tbody>
+            <%studies.forEach(studies =>{ %>
+                <tr>
+                <th><%= studies.studie_id %></th>    
+                <th><%= studies.titel %></th>
+                <th><%= studies.slug %></th>
+                <th><%= studies.dauer_von_bis %></th>
+                <th><%= studies.status %></th>
+                <th><%= studies.vergutung_euro_std %></th>
+                <th>
+                    <a href="/admin/studie/edit/<%= studies.studie_id %>" class = "btn btn-warning"> Bearbeiten</a>
+                    <form method ="post" action= "/studie/delete" style ="display: inline " onsubmit="confirmDelete(event,this)">
+                        <input type= "hidden" name="studie_id" value= "<%= studies.studie_id%>">
+                        <button class="btn btn-danger">Löschen</button>
+                    </form>
+                    
+                </th>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include ('../../partials/footer.ejs') %>     
+<script>
+    function confirmDelete(event, form){
+        event.preventDefault();
+        var decision = confirm("Möchten Sie diese Studie löschen?")
+        if(decision){
+            form.submit();
+        }else{
+
+        }
+    }
+</script>

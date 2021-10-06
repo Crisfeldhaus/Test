@@ -1,0 +1,26 @@
+<%- include ('../../partials/header.ejs') %>
+<section class="signup-form">
+    <div class = "container">
+        <hr>
+        <div class="card">
+            <div class = "card-header">
+                <h2>User bearbeiten</h2>
+            </div>
+            <div class="card-body">
+                <form action = "/users/update" method = "post">
+                    <input type = "text" name = "vorname" placeholder="Vorname" value="<%=beta_users.vorname%>">
+                    <br> <br>
+                    <input type = "text" name = "nachname" placeholder="Nachname" value="<%=beta_users.nachname%>">
+                    <br><br>
+                    <input type = "text" name ="email" placeholder = "Email" value="<%=beta_users.email%>">
+                    <br> <br>
+                    <input type = "hidden" name ="user_id" value = "<%= beta_users.user_id %>"> 
+                    <button class = "btn btn-success">Aktualisieren</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include ('../../partials/footer.ejs') %> 

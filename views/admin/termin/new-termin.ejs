@@ -1,0 +1,41 @@
+<%- include ('../../partials/header.ejs') %>
+
+
+<section class="signup-form">
+    <div class = "container">
+        <form action = "/termine/save" method = "post">
+
+            <input type = "text" name = "datum" placeholder="Datum" id="datepicker" >
+            <br><br>
+            <input type = "text" name ="titel" placeholder = "Titel">
+            <br> <br>
+            <input type = "text" name = "ort" placeholder = "Ort">
+            <br> <br>
+            <input type = "time" name = "uhrzeit" placeholder = "Uhrzeit">
+            <br> <br>
+            <label>Studie</label> 
+            <select name= "studie" class= "form-control">
+                <%studies.forEach((studies)=> { %>
+                    <option value = "<%= studies.studie_id %>"><%=studies.titel %></option>
+                <% }) %>
+            </select>
+            <br>
+            <button class = "btn btn-success" name = "submit">Termin hinzufügen</button>
+        </form>
+    </div>
+</section>
+
+<%- include ('../../partials/footer.ejs') %>
+<script>
+    $( function() {
+      $( "#datepicker" ).datepicker({
+          dateFormat: "dd-mm-yy",
+          changeYear: true,
+          changeMonth: true,
+      })
+    });
+</script>
+
+
+
+<script src = "/tinymce/tiny.min.js"></script>

@@ -1,0 +1,168 @@
+<%- include ('partials/homeheader.ejs') %>
+
+    <section class="banner banner-secondary" id="top" style="background-image: url(img/banner-image-1-1920x300.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="banner-caption">
+                        <div class="line-dec"></div>
+                        <h2><%= studies.titel %></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <main>
+        <section class="featured-places">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div>
+                      <img src="" alt="" class="img-responsive wc-image">
+                    </div>
+                    <br>
+                  </div>
+                </div>
+
+                <div class="accordions">
+                    <ul class="accordion">
+                        <li>
+                            <a class="accordion-trigger">Studie Beschreibung</a>
+                            
+                            <div class="accordion-content">
+                                <%- studies.beschreibung %>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="accordion-trigger">Termine</a>
+                            <div class="accordion-content">
+                              <div class = "container">
+                                <h2>Termine</h2>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Titel</th>
+                                            <th>Datum</th>
+                                            <th>Uhrzeit</th>
+                                            <th>Ort</th>
+                                            <th>Anmeldung / Abmeldung</th>
+                                            <th>Hinweis</th>
+                                        </tr>          
+                                    </thead>
+                                    <tbody>
+                                      <% studies.termines.forEach(termines =>{ %>
+                                          <tr>
+                                            <td><%= termines.titel %></td>
+                                            <td><%= termines.datum %></td>
+                                            <td><%= termines.uhrzeit %></td>
+                                            <td> <p class="lead"> <i class="fa fa-map-marker"></i> <%= termines.ort %> </p></td>
+                                            <th>
+                                              <% if (Loggedin) { %>
+                                                <form method ="post" action= "/termin/anmelden" style ="display: inline " onsubmit="confirmSubscription(event,this)">
+                                                  <input type= "hidden" name="termin_id" value= "<%= termines.termin_id%>">
+                                                  <button class="btn btn-success">Anmelden</button>
+                                                </form>
+                                                <form method ="post" action= "/termin/abmelden" style ="display: inline " onsubmit="confirmDelete(event,this)">
+                                                    <input type= "hidden" name="termin_id" value= "<%= termines.termin_id%>">
+                                                    <button class="btn btn-danger">Abmelden</button>
+                                                </form>
+                                                <% }else { %>
+                                                    <td>Registrierung erfordelich!</td>
+                                                <% } %>     
+                                            </th>
+                                          </tr>
+                                      <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="accordion-trigger">Contact Details</a>
+
+                            <div class="accordion-content">
+                              <p>
+                                  <span>Name</span>
+
+                                  <br>
+
+                                  <strong>John Smith</strong>
+
+                              </p>
+
+                              <p>
+                                  <span>Phone</span>
+
+                                  <br>
+                                  
+                                  <strong>
+                                    <a href="tel:123-456-789">123-456-789</a>
+                                  </strong>
+                              </p>
+
+                              <p>
+                                  <span>Mobile phone</span>
+
+                                  <br>
+                                  
+                                  <strong>
+                                    <a href="tel:456789123">456789123</a>
+                                  </strong>
+                              </p>
+
+                              <p>
+                                <span>Email</span>
+
+                                <br>
+                                
+                                <strong>
+                                  <a href="mailto:john@carsales.com">john@carsales.com</a>
+                                </strong>
+                              </p>
+
+                              <p>
+                                <span>Website</span>
+
+                                <br>
+                                
+                                <strong>
+                                  <a href="http://www.cannonguards.com/">http://www.cannonguards.com/</a>
+                                </strong>
+                              </p>
+                            </div>
+                        </li>
+                    </ul> <!-- / accordion -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include ('partials/homefooter.ejs') %>    
+
+    <script>
+      function confirmDelete(event, form){
+          event.preventDefault();
+          var decision = confirm("Möchten Sie von dieser Studie Abmelden?")
+          if(decision){
+              form.submit();
+              alert("Abmeldung erfolgreich!")
+          }else{
+  
+          }
+      }
+  </script>
+  <script>
+    function confirmSubscription(event, form){
+        event.preventDefault();
+        var decision = confirm("Möchten Sie an diese Studie Teilnehmen?")
+        if(decision){
+            form.submit();
+            alert("Anmeldung erfolgreich!")
+          
+        }else {
+          alert("Sie müssen sich anmelden um einen Termin zu vereinbaren!")
+          window.location.replace("http://localhost:3000/admin/users/create")
+        }
+    }
+</script>

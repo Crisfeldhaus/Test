@@ -1,0 +1,26 @@
+<%- include ('partials/homeheader.ejs') %>
+<body>
+    <div class = "container">
+        <div class="jumbotron">
+            <h1 class="display-4">Verfügbare Studien</h1>
+            <p class="lead">Die verfügbare Studien werden hier angezeigt.</p>
+            <hr class="my-4">
+            <p> <%studies.forEach(studies =>{ %>
+                <div class= "card">
+                    <div class= "card-header">
+                         <h2><%= studies.titel %></h2>
+                    </div>
+                    <div class = "card-body">
+                        <div class="blue-button">
+                            <a href="/<%= studies.slug %>">Studie lesen</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+             <% }) %>
+             </p>              
+          </div>
+        <br>   
+    </div>
+</body>
+<%- include ('partials/homefooter.ejs') %>

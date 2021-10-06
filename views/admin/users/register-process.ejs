@@ -1,0 +1,138 @@
+<%- include ('../../partials/homeheader.ejs') %>
+      
+    <section class="banner banner-secondary" id="top" style="background-image: url(img/banner-image-1-1920x300.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="banner-caption">
+                    <div class="line-dec"></div>
+                      <h2>Registrieren</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <form action = "/signup" method="post">
+            <div class="container">
+         <fieldset id="fieldset-login" class="box ui-widget-content ui-corner-all"><legend>Registrierung</legend>
+        <div><label for="id_proband-email">E-Mail-Adresse</label><input id="id_proband-email" type="text" name="proband-email" maxlength="75" /></div>
+        <div class="column"><label for="id_proband-password1">Passwort</label><input type="password" name="proband-password1" id="id_proband-password1" /></div>
+        <div class="column"><label for="id_proband-password2">Passwort wiederholen</label><input type="password" name="proband-password2" id="id_proband-password2" /></div>
+    </fieldset><br>
+        
+        <fieldset id="fieldset-demographic" class="box ui-widget-content ui-corner-all"><legend>Persönliche Daten</legend>
+        <div class="column"><label for="id_proband-first_name">Vorname</label><input id="id_proband-first_name" type="text" name="proband-first_name" maxlength="30" /></div>
+        <div><label for="id_proband-last_name">Nachname</label><input id="id_proband-last_name" type="text" name="proband-last_name" maxlength="30" /></div>
+        <div style="clear: both;"><label for="id_proband-birth_year">Geburtsjahr</label><input type="text" name="proband-birth_year" id="id_proband-birth_year" /></div>
+        <div><label for="id_proband-language">Muttersprache</label><select name="proband-language" id="id_proband-language">
+            <option value="" selected="selected">auswählen</option>
+            <option value="1">deutsch</option>
+            <option value="2">englisch</option>
+            <option value="3">andere</option>
+            <option value="4">Simul</option>
+        </select></div>
+
+        <div><label for="id_proband-gender">Geschlecht</label><select name="proband-gender" id="id_proband-gender">
+            <option value="" selected="selected">---------</option>
+            <option value="m">männlich</option>
+            <option value="f">weiblich</option>
+        </select></div>
+
+        <div class="column"><label for="id_proband-education_level">Höchster Bildungsgrad</label><select name="proband-education_level" id="id_proband-education_level">
+            <option value="" selected="selected">auswählen</option>
+            <option value="1">kein Abschluss</option>
+            <option value="2">Hauptschule</option>
+            <option value="3">Realschule</option>
+            <option value="4">Lehre/Ausbildung</option>
+            <option value="5">Abitur/Fachabitur</option>
+            <option value="6">Hochschule</option>
+        </select></div>
+
+        <div><label for="id_proband-profession">Tätigkeiten </label><select name="proband-profession" id="id_proband-profession">
+            <option value="" selected="selected">auswählen</option>
+            <option value="1">Schüler</option>
+            <option value="2">in Ausbildung</option>
+            <option value="3">Student</option>
+            <option value="4">nicht berufstätig</option>
+            <option value="5">berufstätig</option>
+            <option value="6">im Ruhestand</option>
+        </select></div>
+
+        <div class="column" style="clear: both;"><label for="id_proband-visual_aid">Sehhilfe</label><select name="proband-visual_aid" id="id_proband-visual_aid">
+            <option value="" selected="selected">---------</option>
+            <option value="n">keine</option>
+            <option value="b">Brille</option>
+            <option value="k">Kontaktlinse</option>
+        </select></div>
+
+        <div><label for="id_proband-colour_deficiency">Farbschwäche</label><input type="checkbox" name="proband-colour_deficiency" id="id_proband-colour_deficiency" /></div>
+        <div style="clear: both;"><label for="id_proband-handedness">Händigkeit</label><select name="proband-handedness" id="id_proband-handedness">
+            <option value="" selected="selected">---------</option>
+            <option value="l">links</option>
+            <option value="r">rechts</option>
+        </select></div>
+    </fieldset>
+
+    <fieldset id="fieldset-contact" class="box ui-widget-content ui-corner-all"><legend>Kontaktdaten</legend>
+        <div><label for="id_proband-phone_number">Telefonnummer</label><input id="id_proband-phone_number" type="text" name="proband-phone_number" maxlength="100" /></div>
+    </fieldset><br>
+        <br>
+
+    <fieldset id="fieldset-skills" class="box ui-widget-content ui-corner-all ui-helper-clearfix"><legend>Kenntnisse &amp; Fähigkeiten</legend>
+
+        <div><label for="id_proband-driving_licence">Führerschein</label><input type="checkbox" name="proband-driving_licence" id="id_proband-driving_licence"/>  (falls vorhanden)</div>
+        <div ><label for="id_proband-driving_licence_years">Ausstellungsjahr</label><input type="text" name="proband-driving_licence_years" id="id_proband-driving_licence_years" /></div>
+        <div ><label for="id_proband-driving_performance">Mittlere Fahrleistung</label><input type="text" name="proband-driving_performance" id="id_proband-driving_performance" /> km pro Jahr </div>
+
+
+        <div class="column" style="clear: both;"><label for="id_proband-computer_experience">Computererfahrung</label><select name="proband-computer_experience" id="id_proband-computer_experience">
+            <option value="" selected="selected">---------</option>
+            <option value="n">keine</option>
+            <option value="l">gering</option>
+            <option value="m">durchschnittlich</option>
+            <option value="h">hoch</option>
+        </select></div>
+
+        <div ><label for="id_proband-internet_experience">Interneterfahrung</label><select name="proband-internet_experience" id="id_proband-internet_experience">
+            <option value="" selected="selected">---------</option>
+            <option value="n">keine</option>
+            <option value="l">gering</option>
+            <option value="m">durchschnittlich</option>
+            <option value="h">hoch</option>
+        </select></div>
+    </fieldset><br>
+        <br>
+    <fieldset class="box ui-widget-content ui-corner-all"><legend>Datenschutzbestimmung:</legend>
+        <div><textarea name="privacy_text" id="privacy_text" readonly="readonly" rows="7" cols="100">Teilnehmerdatenbank
+
+Die in unserem System erfassten Daten dienen ausschliesslich der Organisation von wissenschaftlichen Experimenten. Diese Daten werden nicht an Dritte weitergegeben. Wir nutzen die Daten zu den folgenden Zwecken:
+ - um Teilnehmer über neue Labor- oder Internetexperimente zu informieren und dazu einzuladen
+ - um eine wissenschaftlich begründete Auswahl von Teilnehmern für bestimmte Experimente durchzuführen 
+ - um das Erscheinen bzw. Nicht-Erscheinen der angemeldeten Teilnehmer bei Experimenten zu überprüfen
+ - Es gibt keine Verknüpfung zwischen den im Experiment generierten Daten und den Daten in unserem Rekrutierungs-System. 
+ - Ein Teilnehmer kann jederzeit bestimmen, dass er keine weiteren Einladungen zu Experimenten erhalten will.
+ - Ein Teilnehmer erhält nach der Registrierung eine E-Mail mit einem personalisierten Link. Hierüber kann der Teilnehmer seine Daten löschen. Bei Verlust dieser E-Mail ist eine formlose schriftliche Löschungsaufforderung per E-Mail an den Administrator dieser Seiten zu schicken.
+ 
+Untersuchungen 
+
+Bei der Durchführung von Untersuchungen werden durch das Verhalten der Teilnehmer Daten aufgezeichnet.
+Diese Daten werden wissenschaftlich durch das die Untersuchungen durchführende Institut ausgewertet. Dabei werden die Daten anonymisiert, so dass ein Personenbezug unmöglich wird. Die Teilnahme an den Experimenten ist in diesem Sinne anonym. 
+Die aufgezeichneten, anonymisierten Daten werden für die Erstellung von wissenschaftlichen Forschungsarbeiten und Vorträgen genutzt. Diese Arbeiten werden veröffentlicht. Hierbei sind keine Rückschlüsse auf bestimmte Teilnehmer möglich. 
+
+Videoaufzeichnungen
+ 
+Bei der Durchführung von Videoaufzeichnungen werden von den Teilnehmern Ton und Bildaufzeichnungen erstellt. Die Videodaten werden wissenschaftlich durch das die Untersuchungen durchführende Institut ausgewertet. Insbesondere werden Transskripte der Konversation erstellt. Das Institut erhält das Recht, ausgewählte Sequenzen im Rahmen von Präsentationen zu publizieren. Sollten Videoaufzeichnungen nötig werden, wird darüber zuvor explizit informiert.
+Diese Aufzeichnungen werden anonymisiert und bei der Auswertung nicht den persönlichen Daten der Teilnehmer zugeordnet.
+</textarea></div>
+        <div id="fieldset-privacy"><input type="checkbox" name="proband-rules_signed" id="id_proband-rules_signed" /><label for="id_proband-rules_signed">Ich bin mit den Datenschutzbestimmungen einverstanden.</label></div>
+    </fieldset>
+         
+   <button type="submit" name="submit">Registrierung abschließen</button>
+</form>
+</div>
+
+	<div id="footer" class="ui-helper-reset ui-helper-clearfix ui-widget-content ui-corner-bottom">
+		Copyright © 2020 , BTU Cottbus-Senftenberg Alle Rechte vorbehalten. 
+		
+	</div>
+<%- include ('../../partials/homefooter.ejs') %>    

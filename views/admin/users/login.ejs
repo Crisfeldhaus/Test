@@ -1,0 +1,19 @@
+<%- include ('../../partials/homeheader.ejs') %>
+
+<div class = "container">
+    <hr>
+    <div class= "card mt-5">
+        <div class = "card-header">
+            <h2>Login</h2>
+        </div>
+        <div class ="card-body">
+            <form action="/authenticate" method="post">
+                <input class="form-control" name= "email" type= "email" placeholder="muster@mustermann.com"><br>
+                <input class = "form-control" name="password" type="password" placeholder= "Passwort"><br>
+                <button type="submit" class="btn btn-success">Login</button><br>
+            </form><br>
+
+        </div>
+    </div>
+</div>
+<%- include ('../../partials/homefooter.ejs') %>  

@@ -1,0 +1,56 @@
+<%- include ('../../partials/homeheader.ejs') %>.
+<div class = "container">
+    <hr>
+    <div class= "card mt-5">
+        <div class = "card-header">
+            <% if(message.length > 0){ %>
+                <div class ="alert alert-danger">
+                 <%= message %>
+                </div> 
+             <% } %>
+            <h2>Neue User</h2>
+        </div>
+        <div class ="card-body">
+            <form onSubmit = "return checkPassword(this)" action="/users/create" method="post" >
+                <input class="form-control" name= "email" type= "email" placeholder="muster@mustermann.com"><br>
+                <input class = "form-control" name="vorname" type="text" placeholder= "Vorname"><br>
+                <input class = "form-control" name="nachname" type="text" placeholder= "Nachname"><br>
+                <input class = "form-control" name="password" type="password" id="password" placeholder= "Passwort"><br>
+                <input class = "form-control" name="password2" type="password" id="password2" placeholder= "Passwort wiederholen"><br>
+                <button type="submit" class="btn btn-success">Submit</button><br>
+            </form><br>
+            <span id='message'></span>
+        </div>
+    </div>
+</div>
+
+<script>
+          
+    // Function to check Whether both passwords
+    // is same or not.
+    function checkPassword(form) {
+        password = form.password.value;
+        password2 = form.password2.value;
+
+        // If password not entered
+        if (password == '')
+            alert ("Please enter Password");
+              
+        // If confirm password not entered
+        else if (password2 == '')
+            alert ("Please enter confirm password");
+              
+        // If Not same return False.    
+        else if (password != password2) {
+            alert ("\nPasswort stimmen nicht. Versuchen Sie es nochmal...")
+            return false;
+        }
+
+        // If same return True.
+        else{
+            alert("Willkommen zum Probandenportal der BTU!")
+            return true;
+        }
+    }
+</script>
+<%- include ('../../partials/homefooter.ejs') %>    

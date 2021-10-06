@@ -1,0 +1,58 @@
+<%- include ('../../partials/header.ejs') %>     
+<section class="banner banner-secondary" id="top" style="background-image: url(../../img/banner-image-1-1920x300.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="banner-caption">
+                    <div class="line-dec"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class = "container">
+<h2>Users</h2>
+<a class= "btn btn-success" href="/admin/studie/create"> Neue User Hinzufügen</a>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>Email</th>
+            <th>Aktionen</th>
+        </tr>          
+    </thead>
+    <tbody>
+        <% beta_users.forEach(beta_users =>{ %>
+            <tr>
+            <th><%= beta_users.user_id %></th>    
+            <th><%= beta_users.vorname %></th>
+            <th><%= beta_users.nachname %></th>
+            <th><%= beta_users.email %></th>
+            <th>
+                <a href="/admin/studie/edit/<%= beta_users.user_id %>" class = "btn btn-warning"> Bearbeiten</a>
+                <form method ="post" action= "/users/delete" style ="display: inline " onsubmit="confirmDelete(event,this)">
+                    <input type= "hidden" name="user_id" value= "<%= beta_users.user_id%>">
+                    <button class="btn btn-danger">Löschen</button>
+                </form>
+                
+            </th>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+</div>
+<%- include ('../../partials/footer.ejs') %>     
+<script>
+function confirmDelete(event, form){
+    event.preventDefault();
+    var decision = confirm("Möchten Sie dieses User löschen?")
+    if(decision){
+        form.submit();
+    }else{
+
+    }
+}
+</script>

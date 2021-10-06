@@ -1,0 +1,40 @@
+<%- include ('../../partials/header.ejs') %>
+<section class="signup-form">
+    <div class = "container">
+        <hr>
+        <div class="card">
+            <div class = "card-header">
+                <h2>Studie hinzufügen</h2>
+            </div>
+            <div class="card-body">
+                <form action = "/studie/save" method = "post">
+                    <input type = "text" name = "titel" placeholder="Name der Studie">
+                    <br> <br>
+                    <textarea class = "form-control" type = "text" name = "beschreibung" placeholder = "Beschreibung" id="beschreibung"></textarea><br>
+                    <br><br>
+                    <input type = "text" name ="dauer_von_bis" placeholder = "Dauer von/bis">
+                    <br> <br>
+                    <input type = "text" name = "status" placeholder = "Status">
+                    <br> <br>
+                    <input type = "text" name = "vergutung_std" placeholder="Vergütung Euro/std">
+                    <br> <br>
+                    <button type = "submit" name = "submit">Studie hinzufügen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include ('../../partials/footer.ejs') %>        
+
+<script src = "/tinymce/tinymce.min.js"></script>
+<script>
+
+    tinymce.init({
+        language: 'de',
+        selector: "#beschreibung",
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+        ]
+    })
+
+</script>
